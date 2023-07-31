@@ -1,0 +1,95 @@
+{% extends 'base.html' %}    
+{% block content %}
+    <!--Body Content-->
+    <div id="page-content">
+    	<!--Page Title-->
+    	<div class="page section-header text-center">
+			<div class="page-title">
+        		<div class="wrapper"><h1 class="page-width">New Post</h1></div>
+      		</div>
+		</div>
+        <!--End Page Title-->
+        
+        <div class="container">
+        	<div class="row">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 main-col offset-md-3">
+                	<div class="mb-4">
+                        
+                       <form method="post" action="" enctype="multipart/form-data" id="CustomerLoginForm" accept-charset="UTF-8" class="contact-form">	
+                      
+                        {{ form.hidden_tags}}
+                        
+                          <div class="row">
+	                          <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="form-group">
+                                    <!--<label for="FirstName">First Name</label>
+                                    <input type="text" name="customer[first_name]" placeholder="" id="FirstName" autofocus="">-->
+                                    {{form.title.label}}
+                                    {% if form.title.errors %}
+                                        {{form.title(class="is-invalid", id="FirstName" )}}
+                                       <div>
+                                        {% for error in form.title.errors %}
+                                        <span style="color: red;">{{error}}</span>
+                                        {% endfor %}
+                                       </div>
+                                       {% else %}
+                                       {{form.title(id="FirstName")}}
+                                    {% endif %}
+                                </div>
+                               </div>
+                               <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="form-group">
+                                    <!--<label for="LastName">Last Name</label>
+                                    <input type="text" name="customer[last_name]" placeholder="" id="LastName">-->
+                                    {{form.description.label}}
+                                    {% if form.description.errors %}
+                                    {{form.last_name(class="is-invalid",id="LastName")}}
+                                    {% for error in form.description.errors %}
+                                    <span style="color: red;">{{error}}</span>
+                                    {% endfor %}
+                                    
+                                    {% else %}
+                                    {{form.description(id="LastName")}}
+                                    {% endif %}
+                                </div>
+                               </div>
+
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="form-group">
+                                    <!--<label for="CustomerPassword">Password</label>
+                                    <input type="password" value="" name="customer[password]" placeholder="" id="CustomerPassword" class="">   -->  
+                                    {{form.image_upload.label}}
+                                    {% if form.image_upload.errors %}             
+                                    {{form.image_upload}}
+                                    {% for error in form.image_upload.errors %}
+                                    <span style="color: red;">{{error}}</span>
+                                    {% endfor %}
+                                    
+                                    {% else %}
+                                    {{form.image_upload}}
+                                    
+                                    {% endif %}
+                                           	
+                                </div>
+                            </div>
+
+                          </div>
+                          <div class="row">
+                            <div class="text-center col-12 col-sm-12 col-md-12 col-lg-12">
+                                <!--<input type="submit" class="btn mb-3" value="Create">-->
+                                {{form.submit(class="btn mb-3")}}
+                            </div>
+                         </div>
+                     </form>
+                    <a href="{{ url_for('users.request_email')}}" id="RecoverPassword">Forgot your password?</a> &nbsp; | &nbsp;
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        
+    </div>
+    <!--End Body Content-->
+    {% endblock content %}
